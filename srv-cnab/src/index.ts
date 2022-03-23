@@ -2,6 +2,7 @@ import express from "express";
 import Logger from "./config/logger/Logger";
 import Rota from "./config/router/Router";
 import errorMiddleware from "./exception/ErrorMiddleware";
+import fileupload from 'express-fileupload';
 
 class App {
     public app: express.Application;
@@ -16,10 +17,11 @@ class App {
     private config(): void {
 
         this.app.set("case sensitive routing", true);
+        this.app.use(fileupload());
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use("/", Rota);
-        this.app.use(errorMiddleware);
+        this.app.use(errorMiddleware);                
 
         const port = 8080;
         this.app.set("port", port);
