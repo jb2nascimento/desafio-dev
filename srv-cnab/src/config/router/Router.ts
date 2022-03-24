@@ -17,7 +17,8 @@ router.get("/api-docs", swaggerUi.setup(specs, options));
 router.get("/health", (req, res) => res.send("OK"));
 
 const cnabController = new CNABController();
-//@ts-ignore
+
 router.post("/cnab", cnabController.upload);
+router.get("/cnab", cnabController.getAll);
 
 export = router;

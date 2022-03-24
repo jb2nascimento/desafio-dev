@@ -27,7 +27,7 @@ const options = {
     ],
   },
   apis: [
-    "./src/controllers/**/*Controller.{ts,js}"
+    "./src/api/**/*Controller.{ts,js}"
   ],
 
 };
