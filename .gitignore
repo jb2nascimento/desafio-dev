@@ -1,2 +1,7 @@
 
 srv-cnab/yarn-error.log
+srv-cnab/automacao/.classpath
+srv-cnab/automacao/.project
+srv-cnab/automacao/.settings
+srv-cnab/automacao/junitResult.xml
+srv-cnab/automacao/gherkin-results/
