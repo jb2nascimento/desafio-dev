@@ -7,6 +7,6 @@ export class ExceptionUtils {
     }
 
     public static badRequest() {
-        return new Exception(400, "Humm! Não entendi o que você precisa");
+        return new Exception(400, "Humm! Não entendi o que você precisa, acho que faltou algo.");
     }
 }

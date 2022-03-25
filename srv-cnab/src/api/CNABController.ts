@@ -11,17 +11,28 @@ export default class CNABController {
         private logger: Logger = new Logger()
     ) {
     }
+    
 
     /**
      * @swagger
      * /cnab:
      *    post:
-     *      summary: realiza o tratamento do arquivo.
+     *      summary: Realiza upload do arquivo CNAB
+     *      requestBody:
+     *        content:
+     *          multipart/form-data:
+     *            schema:
+     *              type: object
+     *              properties:
+     *                cnab:
+     *                  type: string
+     *                  format: binary
+     *                  name: cnab
      *      responses:
      *        200:
      *          description: OK.
      *        400:
-     *          Dados invalidos para a requisicao
+     *          description: Arquivo nao enviado
      *        503:
      *          description: Serviço indisponivel.
      */
@@ -33,6 +44,7 @@ export default class CNABController {
 
         try {
             this.logger.log.info(`Iniciando importacao do arquivo cnab`);
+            console.log(request.files)
             this.service.importCNABFile(request.files.cnab.data.toString('utf8'));
             response.status(200).json(ServerResponse.builder().message('Importacao realizada com sucesso').build());
         } catch (err) {
@@ -53,10 +65,10 @@ export default class CNABController {
      *        503:
      *          description: Serviço indisponivel.
      */
-    public getAll = async(request: any, response: Response, next: NextFunction) => {
+    public getAll = async (request: any, response: Response, next: NextFunction) => {
         try {
-           let itens = await this.service.selectAll();
-           response.status(200).json(ServerResponse.builder().details(itens).build());
+            let itens = await this.service.selectAll();
+            response.status(200).json(ServerResponse.builder().details(itens).build());
         } catch (err) {
             this.logger.log.error(err);
             next(ExceptionUtils.unavaible);
