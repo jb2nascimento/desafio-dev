@@ -10,8 +10,7 @@ export default class CNABController {
         private service: CNABService = new CNABService(),
         private logger: Logger = new Logger()
     ) {
-    }
-    
+    }    
 
     /**
      * @swagger
