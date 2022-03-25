@@ -10,3 +10,8 @@ export enum TipoTransacao {
     "Aluguel" = 9
 }
 
+export namespace TipoTransacao {
+    export function naturezaOperacao(tipo: number) {
+        return tipo == 1 || tipo == 4 || tipo == 5 || tipo == 6 || tipo == 7 || tipo == 8 ? "+" : "-";
+    }
+}

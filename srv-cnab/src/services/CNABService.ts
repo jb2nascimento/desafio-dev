@@ -4,6 +4,7 @@ import { CNABServiceDao } from "../dao/CNABServiceDao";
 import { Posicao } from "../models/Posicao";
 import { Transacao } from "../models/Transacao";
 import moment from "moment";
+import momentTz from 'moment-timezone';
 import { TipoTransacao } from "../models/TipoTransacao";
 
 export class CNABService {
@@ -42,21 +43,30 @@ export class CNABService {
                 Transacao.builder()
                     .tipo(TipoTransacao[item.tipo])
                     .cartao(item.cartao)
-                    .cpf(item.cpf)
-                    .valor(item.valor / 100)
-                    .hora(item.hora)
-                    .data(moment(item.data).format('YYYY/MM/DD'))
+                    .cpf(item.cpf)                    
+                    .valor(TipoTransacao.naturezaOperacao(item.tipo) + item.valor / 100)
+                    .hora(this.formatHour(item.hora))
+                    .data(this.formatDate(item.data))
                     .donoLoja(item.dono_da_loja)
                     .nomeLoja(item.nome_loja)
                     .build()
             )
-        });     
+        });
 
         return transacoes;
     }
 
     private getFileField(posicao: Posicao, linha: string): any {
         return linha.substring(posicao.inicio - 1, posicao.fim).trim();
+    }
+
+    private formatHour(hour: string): string {
+        let mom = momentTz(hour, 'HHmmss');
+        return mom.tz('America/Sao_Paulo').format('HH:mm:ss');
+    }
+    
+    private formatDate(date: string): string {
+        return moment(date).format('DD/MM/YYYY');
     }
 
 }

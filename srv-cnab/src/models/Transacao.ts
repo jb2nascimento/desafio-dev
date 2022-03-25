@@ -4,7 +4,7 @@ export class Transacao {
     
     tipo: string;
     data: string;
-    valor: number;
+    valor: string;
     cpf: string;
     cartao: string;
     hora: string;
@@ -68,7 +68,7 @@ export class TransacaoBuilder {
         return this;
     }
 
-    public valor(valor: number): TransacaoBuilder {
+    public valor(valor: string): TransacaoBuilder {
         this._transacao.valor = valor;
         return this;
     }
