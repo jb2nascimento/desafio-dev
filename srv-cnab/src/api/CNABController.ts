@@ -43,8 +43,7 @@ export default class CNABController {
         }
 
         try {
-            this.logger.log.info(`Iniciando importacao do arquivo cnab`);
-            console.log(request.files)
+            this.logger.log.info(`Iniciando importacao do arquivo cnab`);            
             this.service.importCNABFile(request.files.cnab.data.toString('utf8'));
             response.status(200).json(ServerResponse.builder().message('Importacao realizada com sucesso').build());
         } catch (err) {
