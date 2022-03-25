@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc --project tsconfig.json && env-cmd -f .env node dist/index.js",
-    "watch-node": "nodemon dist/index.js",
+    "start": "tsc --project tsconfig.json && env-cmd -f .env node dist/src/index.js",
+    "watch-node": "nodemon dist/src/index.js",
     "build": "tsc --project tsconfig.json",
     "watch-ts": "tsc -w --project tsconfig.json",
-    "test": "jest --collectCoverage --runInBand --silent --verbose"
+    "test": "jest --collectCoverage --runInBand --silent --verbose",
+    "swagger-generate": "tsoa swagger"
   },
   "repository": {
     "type": "git",

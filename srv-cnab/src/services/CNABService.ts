@@ -22,11 +22,11 @@ export class CNABService {
                 .tipo(this.getFileField(LayoutArquivo.tipo, line))
                 .cartao(this.getFileField(LayoutArquivo.cartao, line))
                 .cpf(this.getFileField(LayoutArquivo.cpf, line))
-                .data(this.getFileField(LayoutArquivo.data, line))
+                .data(this.formatDate(this.getFileField(LayoutArquivo.data, line)))
                 .donoLoja(this.getFileField(LayoutArquivo.donoLoja, line))
-                .hora(this.getFileField(LayoutArquivo.hora, line))
+                .hora(this.formatHour(this.getFileField(LayoutArquivo.hora, line)))
                 .nomeLoja(this.getFileField(LayoutArquivo.nomeLoja, line))
-                .valor(this.getFileField(LayoutArquivo.valor, line))
+                .valor(this.formatValue(this.getFileField(LayoutArquivo.valor, line)))
                 .build();
 
             this.dao.save(transacao);
@@ -43,10 +43,11 @@ export class CNABService {
                 Transacao.builder()
                     .tipo(TipoTransacao[item.tipo])
                     .cartao(item.cartao)
-                    .cpf(item.cpf)                    
-                    .valor(TipoTransacao.naturezaOperacao(item.tipo) + item.valor / 100)
-                    .hora(this.formatHour(item.hora))
-                    .data(this.formatDate(item.data))
+                    .cpf(item.cpf)               
+                    .natureza(TipoTransacao.naturezaOperacao(item.tipo))
+                    .valor(item.valor)
+                    .hora(item.hora)
+                    .data(item.data)
                     .donoLoja(item.dono_da_loja)
                     .nomeLoja(item.nome_loja)
                     .build()
@@ -67,6 +68,10 @@ export class CNABService {
     
     private formatDate(date: string): string {
         return moment(date).format('DD/MM/YYYY');
+    }
+
+    private formatValue(value: string): string {
+        return value ? parseFloat(value) / 100.00 + '' : 0.00 + '';
     }
 
 }

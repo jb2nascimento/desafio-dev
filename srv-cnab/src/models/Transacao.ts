@@ -10,6 +10,7 @@ export class Transacao {
     hora: string;
     donaLoja: string;
     nomeLoja: string;
+    natureza: string;
 
     public static builder(): TransacaoBuilder {
         return new TransacaoBuilder();
@@ -29,7 +30,8 @@ export class TransacaoBuilder {
             donaLoja: null,
             hora: null,
             nomeLoja: null,
-            valor: null
+            valor: null,
+            natureza: null
         }
     }
 
@@ -70,6 +72,11 @@ export class TransacaoBuilder {
 
     public valor(valor: string): TransacaoBuilder {
         this._transacao.valor = valor;
+        return this;
+    }
+
+    public natureza(natureza: string): TransacaoBuilder {
+        this._transacao.natureza = natureza;
         return this;
     }
 
