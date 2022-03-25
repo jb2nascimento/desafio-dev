@@ -1,5 +1,5 @@
 import Logger from "../config/logger/Logger";
-import { LayoutArquivo } from "../constants/LayoutArquivo";
+import { LayoutArquivo } from "../models/LayoutArquivo";
 import { CNABServiceDao } from "../dao/CNABServiceDao";
 import { Posicao } from "../models/Posicao";
 import { Transacao } from "../models/Transacao";

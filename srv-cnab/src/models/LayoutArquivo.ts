@@ -1,4 +1,4 @@
-import { Posicao } from '../models/Posicao';
+import { Posicao } from './Posicao';
 
 export class LayoutArquivo {
 
