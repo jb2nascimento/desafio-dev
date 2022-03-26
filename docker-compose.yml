@@ -16,8 +16,28 @@ services:
     networks:
     - cnab_network
 
+  srv-cnab:
+    container_name: srv-cnab
+    build:
+      context: ./srv-cnab
+      dockerfile: Dockerfile  
+    links:
+      - sql-server-db
+    environment:
+      - DATABASE_SERVIDOR=sql-server-db
+      - DATABASE_USUARIO=sa
+      - DATABASE_SENHA=Pass@word
+      - DATABASE=db_desafio_dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - logs:/usr/src/app/logs
+    networks:
+    - cnab_network
+
 volumes:
   mssqldata:
+  logs:
 
 networks:
   cnab_network:
