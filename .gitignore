@@ -5,3 +5,5 @@ srv-cnab/automacao/.project
 srv-cnab/automacao/.settings
 srv-cnab/automacao/junitResult.xml
 srv-cnab/automacao/gherkin-results/
+fed-cnab/yarn.lock
+srv-cnab/yarn.lock

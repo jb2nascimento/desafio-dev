@@ -1,0 +1,39 @@
+<section class="md-ui component-data-table" *ngFor="let item of transacoes | keyvalue">
+    <header class="main-table-header">
+        <h1 class="table-header--title">{{ item.key }}</h1>
+    </header>
+    <div class="main-table-wrapper">
+        <table class="main-table-content">
+            <thead class="data-table-header">
+                <tr class="data-table-row">
+                    <td class="table-datacell datatype-string">CPF</td>
+                    <td class="table-datacell datatype-string">Cartão</td>
+                    <td class="table-datacell datatype-string">Tipo da transação</td>
+                    <td class="table-datacell datatype-string">Data da ocorrência</td>
+                    <td class="table-datacell datatype-string">Hora</td>
+                    <td class="table-datacell datatype-numeric">Valor</td>
+
+                </tr>
+            </thead>
+            <tbody class="data-table-content">
+                <tr class="data-table-row" *ngFor="let transacao of item.value">
+                    <td class="table-datacell datatype-string">{{ transacao.cpf | cpf }}</td>
+                    <td class="table-datacell datatype-string">{{ transacao.cartao }}</td>
+                    <td class="table-datacell datatype-string">{{ transacao.tipo }}</td>
+                    <td class="table-datacell datatype-string">{{ transacao.data }}</td>
+                    <td class="table-datacell datatype-string">{{ transacao.hora }}</td>
+                    <td [ngClass]="transacao.natureza == '+' ? 'data-positive' : 'data-negative'"
+                            class="table-datacell datatype-numeric">
+                        {{transacao.natureza}} {{ transacao.valor | currency:'BRL':true }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer class="main-table-footer">
+        <span class="rows-selection">
+            <span class="rows-selection-label">Saldo em conta:</span>
+            <span class="rows-selection-dropdown">{{ getSaldoEmConta(item.value) | currency:'BRL':true }}</span>
+        </span>
+    </footer>
+</section>
