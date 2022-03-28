@@ -21,8 +21,14 @@ export class HomeService {
     )
   }
 
+  public uploadCnabFile(file: File) {
+    const formData = new FormData();
+    formData.append("cnab", file);
+    return this.http.post(environment.api.cnab, formData);
+  }
+
   private groupBy(transacoes: Array<Transacao>): Map<string, Array<Transacao>> {
-      return transacoes.reduce((entryMap, e) => entryMap.set(e.nomeLoja, [...entryMap.get(e.nomeLoja) || [], e]), new Map());
+    return transacoes.reduce((entryMap, e) => entryMap.set(e.nomeLoja, [...entryMap.get(e.nomeLoja) || [], e]), new Map());
   }
 
 }

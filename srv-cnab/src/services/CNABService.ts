@@ -16,6 +16,8 @@ export class CNABService {
 
     public async importCNABFile(file: string) {
 
+        this.dao.removeAll();
+        
         file.trim().split(/\r?\n/).forEach(line => {
 
             let transacao: Transacao = Transacao.builder()
@@ -31,7 +33,7 @@ export class CNABService {
 
             this.dao.save(transacao);
         });
-    }
+    }   
 
     public async selectAll() {
 

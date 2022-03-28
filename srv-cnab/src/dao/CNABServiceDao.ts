@@ -18,6 +18,12 @@ export class CNABServiceDao {
         return (await transacoes).recordsets;
     }
 
+    public removeAll = async() => {
+        let pool = sql.connect(this._config);
+        let query = (await pool).request().query('DELETE tb_cnab');
+        return (await query).recordsets;
+    }
+
     public save = async (transacao: Transacao) => {
 
         let pool = sql.connect(this._config);

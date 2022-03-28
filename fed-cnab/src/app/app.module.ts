@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { HomeComponent } from './views/home/home.component';
 import { CpfPipe } from './core/pipes/cpf.pipe';
+import { UploadComponent } from './components/upload/upload.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localePt);
 
@@ -16,12 +18,14 @@ registerLocaleData(localePt);
     AppComponent,
     ToolbarComponent,
     HomeComponent,
-    CpfPipe
+    CpfPipe,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [{
     provide: LOCALE_ID,

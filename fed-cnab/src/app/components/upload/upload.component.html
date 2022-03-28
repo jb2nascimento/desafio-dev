@@ -1,0 +1,11 @@
+<input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload" style="margin-left: 25px;">
+
+    {{fileName || "Adicionar arquivo CNAB"}}
+
+    <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+        <i class="material-icons">file_upload</i>
+    </button>
+
+</div>
