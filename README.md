@@ -76,18 +76,20 @@ http://localhost:8080/api-docs
 * Docker Compose
 * Angular Cli
 
-### - Deploy do Projeto
+### Deploy do Projeto
 
 **Depois de clonar o projeto e entrar no diretório "fed-cnab" em um terminal:**
 
+Instalar dependências
 ```bash
-# instalar dependências
 npm install
-
-# construir
+```
+Construir
+```bash
 npm run build
-
-# executar
+```
+Executar
+```bash
 npm start
 ```
 Visualizar:
@@ -105,26 +107,31 @@ http://localhost:4200
 **Banco de dados SQL Server, Utilizar instalação conforme configuração do docker.**
 **Depois de clonar o projeto, entrar no diretório raiz em um terminal:**
 
+Gerar o build da imagem do banco de dados
 ```bash
-# gerar o build da imagem do banco de dados
 docker-compose build sql-server-db
-
-# Iniciar a instancia do container e execução dos scripts iniciais
+```
+Iniciar a instancia do container e execução dos scripts iniciais
+```bash
 docker-compose up -d sql-server-db
 ```
+
 ## Configuração com Docker
 **Nao é possível configurar o ambiente local e docker na mesma maquina pois gera conlito nas portas**
 
 **Depois de clonar o projeto, entrar no diretório raiz em um terminal:**
 
-```bash
-# gerar o build das imagem
-docker-compose build
 
-# Iniciar a instancia dos containers
+### Documentação de API - Swagger
+
+Gerar o build das imagem
+```bash
+docker-compose build
+```
+Iniciar a instancia dos containers
+```bash
 docker-compose up -d
 ```
-
 Visualizar:
 ```
 http://localhost
