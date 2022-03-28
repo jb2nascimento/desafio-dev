@@ -20,21 +20,24 @@
 * Docker
 * Docker Compose
 
-### - Deploy do Projeto
-
+### Deploy do Projeto
 **Depois de clonar o projeto e entrar no diretório "srv-cnab" em um terminal:**
 
+Instalar dependências
 ```bash
-# instalar dependências
 npm install
-
-# gerar documentação - swagger
+```
+Gerar documentação - swagger
+```bash
 npm run swagger-generate
-
-# construir
+```
+Construir
+```bash
 npm run build
+```
 
-# executar
+Executar
+```bash
 npm start
 ```
 
