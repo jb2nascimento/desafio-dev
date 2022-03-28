@@ -66,7 +66,7 @@ npm start
 ### - Url de acesso Front
 * **http://localhost:8080/api-docs**
 
-## - Banco de dados
+## Banco de dados
 
 #### - Requisitos
 * Docker
