@@ -37,8 +37,32 @@ npm run build
 # executar
 npm start
 ```
-### - Documentação Swagger da API
-* **http://localhost:8080/api-docs**
+
+### Documentação de API - Swagger
+
+Instalar o [tsoa](https://www.npmjs.com/package/tsoa)
+```bash
+npm i tsoa --save-dev
+```
+Instalar o [Swagger UI Express](https://www.npmjs.com/package/swagger-ui-express):
+```bash
+npm i swagger-ui-express  --save-dev
+```
+Visualizar:
+```
+http://localhost:8080/api-docs
+
+```
+
+### Endpoints
+
+**Obter todos os dados**
+    
+    GET /:cnab
+
+**Realizar Upload**
+    
+    POST /:cnab
 
 ## Front CNAB
 
