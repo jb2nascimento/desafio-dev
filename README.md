@@ -64,7 +64,7 @@ npm run build
 npm start
 ```
 ### - Url de acesso Front
-* **http://localhost:8080/api-docs**
+* **http://localhost:4200**
 
 ## Banco de dados
 
@@ -94,3 +94,5 @@ docker-compose build
 # Iniciar a instancia dos containers
 docker-compose up -d
 ```
+### - Url de acesso
+* **http://localhost**
