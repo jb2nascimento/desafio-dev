@@ -89,7 +89,7 @@ npm start
 ```
 Visualizar:
 ```
-http://localhost:8080/api-docs
+http://localhost:4200
 
 ```
 
@@ -121,5 +121,9 @@ docker-compose build
 # Iniciar a instancia dos containers
 docker-compose up -d
 ```
-### - Url de acesso
-* **http://localhost**
+
+Visualizar:
+```
+http://localhost
+
+```
