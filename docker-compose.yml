@@ -35,6 +35,18 @@ services:
     networks:
     - cnab_network
 
+  fed-cnab:
+    container_name: fed-cnab
+    build:
+      context: ./fed-cnab
+      dockerfile: Dockerfile  
+    links:
+      - srv-cnab
+    ports:
+      - "80:80"
+    networks:
+    - cnab_network
+
 volumes:
   mssqldata:
   logs:

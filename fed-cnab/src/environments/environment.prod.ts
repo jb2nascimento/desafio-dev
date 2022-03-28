@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
   api: {
-    cnab: 'http://srv-cnab:8080/cnab'
+    cnab: 'http://127.0.0.1:8080/cnab'
   }
 };
