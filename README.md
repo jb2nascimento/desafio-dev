@@ -88,9 +88,9 @@ npm run build
 npm start
 ```
 ### - Url de acesso Front
-* **http://localhost:8080/api-docs**
+* **http://localhost:4200**
 
-## - Banco de dados
+## Banco de dados
 
 #### - Requisitos
 * Docker
@@ -107,7 +107,7 @@ docker-compose build sql-server-db
 docker-compose up -d sql-server-db
 ```
 ## Configuração com Docker
-**Nao é possível configurar o ambiente local e docker na mesma maquina tempo pois gera conlito nas portas**
+**Nao é possível configurar o ambiente local e docker na mesma maquina pois gera conlito nas portas**
 
 **Depois de clonar o projeto, entrar no diretório raiz em um terminal:**
 
@@ -118,3 +118,5 @@ docker-compose build
 # Iniciar a instancia dos containers
 docker-compose up -d
 ```
+### - Url de acesso
+* **http://localhost**
