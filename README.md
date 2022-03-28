@@ -86,9 +86,12 @@ npm run build
 
 # executar
 npm start
+
+Visualizar:
+
+http://localhost:8080/api-docs
+
 ```
-### - Url de acesso Front
-* **http://localhost:4200**
 
 ## Banco de dados
 
