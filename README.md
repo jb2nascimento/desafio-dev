@@ -121,9 +121,6 @@ docker-compose up -d sql-server-db
 
 **Depois de clonar o projeto, entrar no diretório raiz em um terminal:**
 
-
-### Documentação de API - Swagger
-
 Gerar o build das imagem
 ```bash
 docker-compose build
