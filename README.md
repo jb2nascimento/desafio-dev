@@ -86,9 +86,11 @@ npm run build
 
 # executar
 npm start
+```
 
+```bash
 Visualizar:
-
+```
 http://localhost:8080/api-docs
 
 ```
