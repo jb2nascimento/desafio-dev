@@ -11,6 +11,7 @@ import { CpfPipe } from './core/pipes/cpf.pipe';
 import { UploadComponent } from './components/upload/upload.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingComponent } from './components/loading/loading.component';
+import { ToastrModule } from 'ngx-toastr';
 
 registerLocaleData(localePt);
 
@@ -27,7 +28,12 @@ registerLocaleData(localePt);
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    })
   ],
   providers: [{
     provide: LOCALE_ID,

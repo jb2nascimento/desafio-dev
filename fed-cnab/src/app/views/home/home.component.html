@@ -1,4 +1,4 @@
-<app-upload (onSelectFile)="uploadFile($event)"></app-upload>
+<app-upload [fileName]="fileName" (onSelectFile)="uploadFile($event)"></app-upload>
 
 <section class="md-ui component-data-table" *ngFor="let item of transacoes | keyvalue">
     <header class="main-table-header">

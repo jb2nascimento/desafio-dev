@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { HomeService } from 'src/app/core/services/home.service';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { Transacao } from 'src/app/models/Transacao';
@@ -10,7 +11,13 @@ import { Transacao } from 'src/app/models/Transacao';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private homeService: HomeService, private loadingService: LoadingService) { }
+  constructor(
+    private homeService: HomeService, 
+    private loadingService: LoadingService, 
+    private toastr: ToastrService
+  ) { }
+
+  fileName: string = '';
 
   transacoes: Map<string, Array<Transacao>> = new Map<string, Array<Transacao>>();
 
@@ -22,6 +29,9 @@ export class HomeComponent implements OnInit {
   findAll(): void {
     this.homeService.findAllTransactions().subscribe(_transacoes => {
       this.transacoes = _transacoes;
+      this.loadingService.hide();
+    }, (err) => {
+      this.toastr.error('Listar CNAB', 'Ocorreu uma falha =(');
       this.loadingService.hide();
     });
   }
@@ -42,7 +52,12 @@ export class HomeComponent implements OnInit {
   uploadFile(file: File) {
     this.loadingService.show();
     this.homeService.uploadCnabFile(file).subscribe(res => {
+      this.toastr.success('Upload CNAB', 'Importação Finalizada com sucesso =)');      
+      this.fileName = '';
       this.findAll();
+    }, (err) => {
+      this.toastr.error('Upload CNAB', 'Ocorreu uma falha =(');
+      this.loadingService.hide();
     });
   }
 
