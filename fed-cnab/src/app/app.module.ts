@@ -10,6 +10,7 @@ import { HomeComponent } from './views/home/home.component';
 import { CpfPipe } from './core/pipes/cpf.pipe';
 import { UploadComponent } from './components/upload/upload.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoadingComponent } from './components/loading/loading.component';
 
 registerLocaleData(localePt);
 
@@ -19,7 +20,8 @@ registerLocaleData(localePt);
     ToolbarComponent,
     HomeComponent,
     CpfPipe,
-    UploadComponent
+    UploadComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
