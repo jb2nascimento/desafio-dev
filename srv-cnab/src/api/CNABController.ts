@@ -38,16 +38,26 @@ export default class CNABController {
     public upload = async (request: any, response: Response, next: NextFunction) => {
 
         if (!request.files || Object.keys(request.files).length === 0) {
-            next(ExceptionUtils.badRequest());
+            return next(ExceptionUtils.badRequest());
         }
 
+        if(!request.files.cnab.name.includes('.txt')) {
+            return next(ExceptionUtils.badRequest());
+        }       
+
         try {
-            this.logger.log.info(`Iniciando importacao do arquivo cnab`);            
-            this.service.importCNABFile(request.files.cnab.data.toString('utf8'));
-            response.status(200).json(ServerResponse.builder().message('Importacao realizada com sucesso').build());
+            let data = request.files.cnab.data.toString('utf8');           
+            if(this.service.isValidFile(data)) {
+                this.logger.log.info(`Iniciando importacao do arquivo cnab`);            
+                this.service.importCNABFile(data);
+                this.logger.log.info(`Fim importacao do arquivo cnab`);
+                response.status(200).json(ServerResponse.builder().message('Importacao realizada com sucesso').build());
+            } else {
+                return next(ExceptionUtils.unavaible);
+            }
         } catch (err) {
             this.logger.log.error(err);
-            next(ExceptionUtils.unavaible);
+            return next(ExceptionUtils.unavaible);
         }
 
     }
@@ -69,7 +79,7 @@ export default class CNABController {
             response.status(200).json(ServerResponse.builder().details(itens).build());
         } catch (err) {
             this.logger.log.error(err);
-            next(ExceptionUtils.unavaible);
+            return next(ExceptionUtils.unavaible);
         }
     }
 

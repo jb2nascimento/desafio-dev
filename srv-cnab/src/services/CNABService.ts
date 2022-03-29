@@ -14,6 +14,22 @@ export class CNABService {
         private dao: CNABServiceDao = new CNABServiceDao()
     ) { }
 
+    public isValidFile(file: string) {
+        let valid = true;
+        try {
+            file.trim().split(/\r?\n/).forEach(line => {
+                let data = this.formatDate(this.getFileField(LayoutArquivo.data, line));
+                if(data == 'Invalid date') {
+                    valid = false;
+                }
+            });            
+        } catch (error) {
+            return false;
+        }
+               
+        return valid;
+    }
+
     public async importCNABFile(file: string) {
 
         this.dao.removeAll();

@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
       this.transacoes = _transacoes;
       this.loadingService.hide();
     }, (err) => {
-      this.toastr.error('Listar CNAB', 'Ocorreu uma falha =(');
+      this.toastr.error(err?.error?.message ? err.error.message : 'Ocorreu uma falha');
       this.loadingService.hide();
     });
   }
@@ -52,11 +52,10 @@ export class HomeComponent implements OnInit {
   uploadFile(file: File) {
     this.loadingService.show();
     this.homeService.uploadCnabFile(file).subscribe(res => {
-      this.toastr.success('Upload CNAB', 'Importação Finalizada com sucesso =)');      
-      this.fileName = '';
+      this.toastr.success('Upload CNAB', 'Importação Finalizada com sucesso =)');
       this.findAll();
-    }, (err) => {
-      this.toastr.error('Upload CNAB', 'Ocorreu uma falha =(');
+    }, (err) => {      
+      this.toastr.error(err?.error?.message ? err.error.message : 'Ocorreu uma falha');
       this.loadingService.hide();
     });
   }
